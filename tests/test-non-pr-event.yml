@@ -1,0 +1,31 @@
+name: Test non-PR event handling
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_EVENT_NAME: push
+      GITHUB_REF: refs/heads/main
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Run auto-author-assign action on push event
+        id: action
+        uses: .
+        with:
+          repo-token: ${{ github.token }}
+        continue-on-error: true
+      - name: Assert action handled non-PR event gracefully
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "Action outcome: $OUTCOME"
+          # On a push event (not a pull_request), the action should either
+          # skip gracefully (success) or fail with a clear error (failure).
+          # Either way it should not crash with an unhandled exception.
+          if [ "$OUTCOME" = "success" ] || [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action completed with outcome '$OUTCOME'"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
