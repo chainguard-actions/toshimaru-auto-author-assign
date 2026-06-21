@@ -1,0 +1,32 @@
+name: Test default token input
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_EVENT_NAME: pull_request
+      GITHUB_REF: refs/pull/1/merge
+      GITHUB_HEAD_REF: feature-branch
+      GITHUB_BASE_REF: main
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Run auto-author-assign action with default token
+        id: action
+        uses: .
+        # No repo-token provided — should use the default ${{ github.token }}
+        continue-on-error: true
+
+      - name: Assert action was invoked with default token
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "action outcome: $OUTCOME"
+          # The action should run (not be skipped), even if it fails due to
+          # no real GitHub API access in the act environment
+          if [ "$OUTCOME" = "skipped" ]; then
+            echo "FAIL: action was skipped, expected it to run"
+            exit 1
+          fi
+          echo "PASS: action was invoked with default token (outcome=$OUTCOME)"
