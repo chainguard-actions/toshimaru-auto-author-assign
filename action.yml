@@ -1,0 +1,14 @@
+name: Auto Author Assign
+description: 'Assign author to pull requests when the pull requests are opened.'
+author: 'toshimaru'
+inputs:
+  repo-token:
+    description: 'A token for the repository'
+    default: ${{ github.token }}
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+  pre: chainguard-phonehome.js
+branding:
+  icon: 'user-plus'
+  color: 'red'

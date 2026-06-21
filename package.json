@@ -1,0 +1,41 @@
+{
+  "name": "auto-author-assign",
+  "version": "2.1.2",
+  "private": true,
+  "description": "GitHub Actions: Automatically assign pull request authors",
+  "scripts": {
+    "build": "ncc build src/index.js --license licenses.txt",
+    "release": "standard-version",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toshimaru/auto-author-assign.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript"
+  ],
+  "author": "toshimaru",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toshimaru/auto-author-assign/issues"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "homepage": "https://github.com/toshimaru/auto-author-assign#readme",
+  "funding": "https://github.com/sponsors/toshimaru",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "6.0.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.4",
+    "standard-version": "^9.5.0"
+  }
+}

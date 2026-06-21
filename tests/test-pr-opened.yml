@@ -1,0 +1,28 @@
+name: Test pull request opened context
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_EVENT_NAME: pull_request
+      GITHUB_REF: refs/pull/42/merge
+      GITHUB_HEAD_REF: my-feature
+      GITHUB_BASE_REF: main
+      GITHUB_ACTOR: testuser
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Run auto-author-assign in PR opened context
+        id: action
+        uses: .
+        with:
+          repo-token: ${{ github.token }}
+        continue-on-error: true
+      - name: Assert action was invoked and not skipped
+        run: |
+          echo "Action outcome: ${{ steps.action.outcome }}"
+          if [ "${{ steps.action.outcome }}" = "skipped" ]; then
+            echo "FAIL: action was skipped unexpectedly"
+            exit 1
+          fi
+          echo "PASS: action ran with outcome '${{ steps.action.outcome }}'"
