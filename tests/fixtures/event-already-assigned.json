@@ -1,0 +1,21 @@
+{
+  "action": "opened",
+  "pull_request": {
+    "number": 42,
+    "assignees": [
+      {
+        "login": "existing-assignee"
+      }
+    ],
+    "user": {
+      "login": "pr-author",
+      "type": "User"
+    }
+  },
+  "repository": {
+    "name": "test-repo",
+    "owner": {
+      "login": "test-owner"
+    }
+  }
+}

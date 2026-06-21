@@ -1,0 +1,44 @@
+name: Test - Wrong Event Error
+on:
+  workflow_dispatch:
+
+jobs:
+  test-wrong-event:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Inject push payload into event file
+        run: |
+          cat > "$GITHUB_EVENT_PATH" <<'EOF'
+          {
+            "ref": "refs/heads/main",
+            "repository": {
+              "name": "test-repo",
+              "owner": {
+                "login": "test-owner"
+              }
+            }
+          }
+          EOF
+
+      - id: action
+        uses: .
+        env:
+          GITHUB_EVENT_NAME: push
+          GITHUB_REF: refs/heads/main
+          GITHUB_REPOSITORY: test-owner/test-repo
+        with:
+          repo-token: fake-token-not-needed
+        continue-on-error: true
+
+      - name: Assert action failed with expected error
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          if [ "$OUTCOME" != "failure" ]; then
+            echo "FAIL: expected action to fail when triggered with wrong event type, got outcome=$OUTCOME"
+            exit 1
+          fi
+          echo "PASS: action correctly failed when no pull_request or issue payload was present"

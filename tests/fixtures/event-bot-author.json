@@ -1,0 +1,17 @@
+{
+  "action": "opened",
+  "pull_request": {
+    "number": 99,
+    "assignees": [],
+    "user": {
+      "login": "dependabot[bot]",
+      "type": "Bot"
+    }
+  },
+  "repository": {
+    "name": "test-repo",
+    "owner": {
+      "login": "test-owner"
+    }
+  }
+}

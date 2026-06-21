@@ -1,0 +1,49 @@
+name: Test - Already Assigned Skip
+on:
+  workflow_dispatch:
+
+jobs:
+  test-already-assigned:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Inject pull_request payload into event file
+        run: |
+          cat > "$GITHUB_EVENT_PATH" <<'EOF'
+          {
+            "action": "opened",
+            "pull_request": {
+              "number": 42,
+              "assignees": [
+                {
+                  "login": "existing-assignee"
+                }
+              ],
+              "user": {
+                "login": "pr-author",
+                "type": "User"
+              }
+            },
+            "repository": {
+              "name": "test-repo",
+              "owner": {
+                "login": "test-owner"
+              }
+            }
+          }
+          EOF
+
+      - id: action
+        uses: .
+        env:
+          GITHUB_EVENT_NAME: pull_request
+          GITHUB_REF: refs/pull/42/merge
+          GITHUB_REPOSITORY: test-owner/test-repo
+        with:
+          repo-token: fake-token-not-needed-for-early-return
+
+      - name: Assert action succeeded (skipped due to existing assignee)
+        run: |
+          echo "Action completed successfully - assignee skip path worked"
+          echo "PASS"

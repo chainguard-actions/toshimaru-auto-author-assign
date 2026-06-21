@@ -1,0 +1,46 @@
+{
+  "name": "auto-author-assign",
+  "description": "GitHub Actions: Automatically assign pull request authors",
+  "version": "3.0.2",
+  "author": "toshimaru",
+  "type": "module",
+  "private": true,
+  "homepage": "https://github.com/toshimaru/auto-author-assign#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toshimaru/auto-author-assign.git"
+  },
+  "bugs": {
+    "url": "https://github.com/toshimaru/auto-author-assign/issues"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "npx rimraf ./dist && npx rollup --config rollup.config.js",
+    "package:watch": "npm run package -- --watch"
+  },
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/toshimaru",
+  "dependencies": {
+    "@actions/core": "^3.0.1",
+    "@actions/github": "9.1.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "rollup": "^4.60.2"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "*"
+  }
+}
