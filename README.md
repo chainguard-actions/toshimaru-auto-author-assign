@@ -14,6 +14,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | v3.0.2 | [`v3.0.2`](https://github.com/chainguard-actions/toshimaru-auto-author-assign/tree/v3.0.2) | [`bdd7688`](https://github.com/toshimaru/auto-author-assign/commit/bdd7688cbf9e6d5683f02f8c7d8ae4062a254b6d) | [`HARDENING.md`](https://github.com/chainguard-actions/toshimaru-auto-author-assign/blob/v3.0.2/HARDENING.md) |
 | v3.0.3 | [`v3.0.3`](https://github.com/chainguard-actions/toshimaru-auto-author-assign/tree/v3.0.3) | [`3e19bfc`](https://github.com/toshimaru/auto-author-assign/commit/3e19bfc990cb1cf0589dce95e9f75289bb1e22de) | [`HARDENING.md`](https://github.com/chainguard-actions/toshimaru-auto-author-assign/blob/v3.0.3/HARDENING.md) |
 | v3.1.0 | [`v3.1.0`](https://github.com/chainguard-actions/toshimaru-auto-author-assign/tree/v3.1.0) | [`a78a94b`](https://github.com/toshimaru/auto-author-assign/commit/a78a94b219445cece8ccf0d45fec60af449f212a) | [`HARDENING.md`](https://github.com/chainguard-actions/toshimaru-auto-author-assign/blob/v3.1.0/HARDENING.md) |
+| v3.1.1 | [`v3.1.1`](https://github.com/chainguard-actions/toshimaru-auto-author-assign/tree/v3.1.1) | [`4154488`](https://github.com/toshimaru/auto-author-assign/commit/415448809ea5ba0e171b251632720b009df3d8d6) | [`HARDENING.md`](https://github.com/chainguard-actions/toshimaru-auto-author-assign/blob/v3.1.1/HARDENING.md) |
 
 ## Privacy
 
