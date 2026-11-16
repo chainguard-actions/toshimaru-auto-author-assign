@@ -4,8 +4,13 @@
   "version": "v3.1.0",
   "commit_sha": "a78a94b219445cece8ccf0d45fec60af449f212a",
   "url": "https://github.com/toshimaru/auto-author-assign",
-  "policy_sha": "d636be7e43ef829af6e853da6b3c7566db9f72fe",
+  "policy_sha": "374911c4be584df24e6da57af2d990570ef0f859",
   "test_policy_sha": "843adf9e4b8f85d0c08b27b9d0b09dd094b54702",
   "test_agent_version": "2",
-  "harden_agent_version": "2"
+  "harden_agent_version": "2",
+  "dist_artifact": {
+    "gcs_uri": "gs://patch-actions-node-artifacts/dist-artifacts/toshimaru/auto-author-assign/v3.1.0/sha256-7b292e3ac0dc24cce40818d1f612cdae9181bf12ce916d22eec5d9d0f03fc82b.tar.gz",
+    "sha256": "7b292e3ac0dc24cce40818d1f612cdae9181bf12ce916d22eec5d9d0f03fc82b",
+    "size_bytes": 704517
+  }
 }
